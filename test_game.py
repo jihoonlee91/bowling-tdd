@@ -45,3 +45,26 @@ def test_perfect_game_scores_300():
         game.roll(10)
 
     assert game.score() == 300
+
+
+def test_tenth_frame_spare_scores_bonus():
+    game = Game()
+    for _ in range(18):
+        game.roll(0)
+    game.roll(5)
+    game.roll(5)
+    game.roll(3)
+
+    assert game.score() == 13
+
+
+def test_consecutive_strikes_across_frames():
+    game = Game()
+    game.roll(10)
+    game.roll(10)
+    game.roll(5)
+    game.roll(3)
+    for _ in range(14):
+        game.roll(0)
+
+    assert game.score() == 51
