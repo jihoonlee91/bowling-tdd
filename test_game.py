@@ -68,3 +68,16 @@ def test_consecutive_strikes_across_frames():
         game.roll(0)
 
     assert game.score() == 51
+
+
+def test_turkey_then_open_frame():
+    game = Game()
+    for _ in range(14):
+        game.roll(0)
+    game.roll(10)
+    game.roll(10)
+    game.roll(10)
+    game.roll(4)
+    game.roll(2)
+
+    assert game.score() == 70
